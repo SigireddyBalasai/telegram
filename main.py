@@ -3,15 +3,15 @@ import asyncio
 import typing
 
 
-class app():
-  base_url = "https://api.telegram.org/bot"
-  self.token = token
-  def __init__(self):
-    self.token = None
-  def run(token):
-    self.token = token
- class User():
-    def 
-    id = id : int
-    self.is_bot = Bot : boolean
+class App:
+    base_url = "https://api.telegram.org/bot"
+    def __init__(self):
+        self.token : str = None
+
+    def run(self,token):
+        self.token = token
+ class User:
+    def __init__(self, user_id :int):
+        self.user_id : int = user_id
+        self.is_bot : bool
   
