@@ -9,11 +9,10 @@ class App:
         self.token: str
 
     async def get(self,url):
-        session = aiohttp.ClientSession()
-        answer = await session.get(url)
-        answer = await answer.json()
-        await session.close()
-        return answer
+        async with  aiohttp.ClientSession() as session:
+            async with session.get(url) as response:
+                answer = await response.json()
+
 
     async def run(self,token):
         App.token = token
