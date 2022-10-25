@@ -47,5 +47,12 @@ class Message():
         self.forwaded = Message(ans)
         return self.forwaded
 
+    @classmethod
+    async def copy_message(self, chat_id, from_chat_id, message_id: int, caption : str = caption, disable_notifications: bool = False,parse_mode:str=None,replay_to_message_id = None,allow_sending_without_replay:bool=False,protect_content: bool = False):
+        url = App.base_url + App.token + f"/forwardMessage?chat_id={chat_id}&caption={caption}&from_chat_id={from_chat_id}&disable_notifications={disable_notifications}&protect_content={protect_content}&message_id={message_id}&parsemode={parse_mode}&replay_to_messsage_id={replay_to_message_id}&allow_sending_without_replay={allow_sending_without_replay}"
+        print(url)
+        ok = App()
+        ans = await ok.get(url)
+        print(ans)
 
 
