@@ -1,0 +1,13 @@
+setup.py
+telegram/BotCommand.py
+telegram/Chat.py
+telegram/ChatPermissions.py
+telegram/Message.py
+telegram/User.py
+telegram/__init__.py
+telegram/main.py
+telegram/update.py
+telegram.py.egg-info/PKG-INFO
+telegram.py.egg-info/SOURCES.txt
+telegram.py.egg-info/dependency_links.txt
+telegram.py.egg-info/top_level.txt
