@@ -1,4 +1,4 @@
-from main import content
+from telegram.src.App import content
 
 
 class BotCommand:

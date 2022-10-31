@@ -1,7 +1,7 @@
-from main import content
-from User import User
-from Chat import Chat
-from main import App
+from telegram.App import content
+# from User import User
+from telegram.Chat import Chat
+from telegram.App import App
 import datetime
 
 
@@ -13,7 +13,7 @@ class Message:
         self.from_user: User(context['from'])
         # self.sender_chat: Chat()
         self.date: int = content(context, 'date')
-        # self.chat: int = Chat(context['chat'])
+        self.chat: int = Chat(context['chat'])
         # self.forward_from: int = User()
         # self.forward_from_chat: int = Chat()
         self.forward_from_message_id: int = content(context, 'forward_from_message_id')
@@ -40,7 +40,7 @@ class Message:
                                          f'&reply_to_message_id={reply_to_message_id}' \
                                          f'&allow_sending_without_reply={allow_sending_without_reply}'
         print(url)
-        ok = App()
+        ok = App
         ans = await ok.get(url)
         # ok = ok["result"]
         # print(ok.keys())

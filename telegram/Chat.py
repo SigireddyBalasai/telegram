@@ -1,4 +1,4 @@
-from main import content
+from telegram.App import content
 
 
 # from Message import Message

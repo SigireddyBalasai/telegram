@@ -1,11 +1,12 @@
 setup.py
+telegram/App.py
 telegram/BotCommand.py
 telegram/Chat.py
 telegram/ChatPermissions.py
 telegram/Message.py
+telegram/Update.py
 telegram/User.py
 telegram/__init__.py
-telegram/main.py
 telegram/update.py
 telegram.py.egg-info/PKG-INFO
 telegram.py.egg-info/SOURCES.txt

@@ -1,7 +1,7 @@
 from main import App
 import asyncio
 import aiohttp
-from telegram.update import Update
+from telegram.Update import Update
 
 
 asyncio.run(App.run(token="5764436314:AAHqvTxI4LLfkK6ilKC2Y4hEo-OW9-oM0g0"))

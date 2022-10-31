@@ -1,13 +1,17 @@
 import aiohttp
+import asyncio
+from asyncio import coroutine
 
 
 class App:
     base_url = "https://api.telegram.org/bot"
     token: str
     answer: str
+    commands = tuple()
 
-    def __init__(self):
+    def __init__(self,command_prefix):
         self.token: str
+        self.command_prefix = command_prefix
 
     @classmethod
     async def get(cls, url):
@@ -19,9 +23,14 @@ class App:
     @classmethod
     async def run(cls, token):
         App.token = token
-        url = App.base_url + App.token + "/deleteWebhook"
-        cls.answer = await cls.get(url)
-        return cls.answer
+
+    def command(func):
+        async def function(*args, **kwargs):
+            result = await func(*args, **kwargs)
+            return result
+        App.commands += (function,)
+        print(App.commands)
+        return function
 
 
 def content(context, ids):
@@ -29,7 +38,3 @@ def content(context, ids):
         return context[ids]
     else:
         return None
-
-
-class Message:
-    hello = "hi"

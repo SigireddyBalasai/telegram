@@ -1,4 +1,5 @@
-from main import content
+from telegram.App import content
+from Message import Message
 
 
 class User:
@@ -17,3 +18,6 @@ class User:
         self.can_join_groups: bool = content(context, 'can_join_groups')
         self.can_read_all_group_messages: bool = content(context, 'can_read_all_group_messages')
         self.supports_inline_queries: bool = content(context, 'supports_inline_queries')
+
+    async def send_message(self, text):
+        await Message.send_message(self.user_id, text)
