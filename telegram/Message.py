@@ -91,6 +91,5 @@ class Message:
                                          f"&parsemode={parse_mode}&replay_to_message_id={replay_to_message_id}" \
                                          f"&allow_sending_without_replay={allow_sending_without_replay}"
         print(url)
-        ok = App()
-        ans = await ok.get(url)
+        ans = await App.get(url)
         print(ans)
