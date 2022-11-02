@@ -61,8 +61,7 @@ class Message:
                                          f'&reply_to_message_id={reply_to_message_id}' \
                                          f'&allow_sending_without_reply={allow_sending_without_reply}'
         print(url)
-        ok = App()
-        ans = await ok.get(url)
+        ans = await App.get(url)
         # ok = ok["result"]
         # print(ok.keys())
         cls.from_user = Message(ans['result']["from"])
