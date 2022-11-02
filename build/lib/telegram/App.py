@@ -1,6 +1,6 @@
 import aiohttp
 import asyncio
-from asyncio import coroutine
+
 
 
 class App:
@@ -9,7 +9,7 @@ class App:
     answer: str
     commands = tuple()
 
-    def __init__(self,command_prefix):
+    def __init__(self, command_prefix):
         self.token: str
         self.command_prefix = command_prefix
 
@@ -34,7 +34,10 @@ class App:
 
 
 def content(context, ids):
-    if ids in context.keys():
-        return context[ids]
-    else:
-        return None
+    try:
+        if ids in context.keys():
+            return context[ids]
+        else:
+            return None
+    except:
+        pass

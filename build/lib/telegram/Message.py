@@ -1,5 +1,5 @@
 from telegram.App import content
-# from User import User
+from User import User
 from telegram.Chat import Chat
 from telegram.App import App
 import datetime
@@ -13,7 +13,7 @@ class Message:
         self.from_user: User(context['from'])
         # self.sender_chat: Chat()
         self.date: int = content(context, 'date')
-        # self.chat: int = Chat(context['chat'])
+        self.chat: Chat = Chat(context['chat'])
         # self.forward_from: int = User()
         # self.forward_from_chat: int = Chat()
         self.forward_from_message_id: int = content(context, 'forward_from_message_id')

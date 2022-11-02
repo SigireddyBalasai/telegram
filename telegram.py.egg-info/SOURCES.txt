@@ -7,6 +7,7 @@ telegram/Message.py
 telegram/Update.py
 telegram/User.py
 telegram/__init__.py
+telegram/data.py
 telegram/update.py
 telegram.py.egg-info/PKG-INFO
 telegram.py.egg-info/SOURCES.txt

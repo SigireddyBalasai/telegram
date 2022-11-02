@@ -3,7 +3,7 @@ from telegram.App import content
 
 # from Message import Message
 class Chat:
-    def __init__(self, context):
+    def __init__(self, context: dict) -> object:
         self.chat_id: int = content(context, 'id')
         self.type: str = content(context, 'type')
         self.title: str = content(context, 'title')
