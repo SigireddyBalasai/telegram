@@ -17,4 +17,4 @@ class MessageEntity:
         self.url: str = content(context,'url')
         self.user: User = User().set(context['User'])
         self.language: str = content(context, 'language')
-        self.custom_emoji_id: str = content(context, 'custom_emoji_id')
+        self.custom_emoji_id: str= content(context, 'custom_emoji_id')
