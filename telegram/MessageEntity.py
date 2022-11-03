@@ -11,10 +11,10 @@ class MessageEntity:
         self.custom_emoji_id: str=None
 
     def set(self,context):
-        self.type: str = context(context, 'type')
-        self.offset: int = context(context, 'offset')
-        self.length: int = context(context, 'length')
-        self.url: str = context(context,'url')
+        self.type: str = content(context, 'type')
+        self.offset: int = content(context, 'offset')
+        self.length: int = content(context, 'length')
+        self.url: str = content(context,'url')
         self.user: User = User().set(context['User'])
-        self.language: str = context(context, 'language')
-        self.custom_emoji_id: str = context(context, 'custom_emoji_id')
+        self.language: str = content(context, 'language')
+        self.custom_emoji_id: str= content(context, 'custom_emoji_id')
