@@ -3,6 +3,7 @@ from User import User
 from telegram.Chat import Chat
 from telegram.App import App
 import datetime
+from Animation import Animation
 
 
 class Message:
@@ -28,27 +29,30 @@ class Message:
         self.media_group_id: str = None
         self.author_signature: str = None
         self.text: str = None
+        self.animation: Animation = None
 
     def set(self, context):
         self.message_id: int = content(context, 'id') or None
-        self.from_user: User = User(context['from']) or None
-        self.sender_chat: Chat = Chat(context['sender_chat']) or None
+        self.from_user: User = User().set(context['from']) or None
+        self.sender_chat: Chat = Chat().set(context['sender_chat']) or None
         self.date: int = content(context, 'date') or None
-        self.chat: Chat = Chat(context['chat']) or None
-        self.forward_from: User = User(context['forward_from']) or None
-        self.forward_from_chat: Chat = Chat(context['forward_from_chat']) or None
+        self.chat: Chat = Chat().set(context['chat']) or None
+        self.forward_from: User = User().set(context['forward_from']) or None
+        self.forward_from_chat: Chat = Chat().set(context['forward_from_chat']) or None
         self.forward_from_message_id: int = content(context, 'forward_from_message_id') or None
         self.forward_signature: str = content(context, 'forward_signature') or None
         self.forward_sender_name: str = content(context, 'forward_sender_name') or None
         self.forward_date: int = content(context, 'forward_date') or None
         self.is_automatic_forward: bool = content(context, 'is_automatic_forward') or None
-        self.reply_to_message: Message = Message(context['reply_to_message']) or None
-        self.via_bot: User = User(context['via_bot']) or None
+        self.reply_to_message: Message = Message().set(context['reply_to_message']) or None
+        self.via_bot: User = User().set(context['via_bot']) or None
         self.edit_date: int = content(context, 'edit_date') or None
         self.has_protected_content: bool = content(context, 'has_protected_content') or None
         self.media_group_id: str = content(context, 'media_group_id') or None
         self.author_signature: str = content(context, 'author_signature') or None
         self.text: str = content(context, 'text') or None
+        self.animation: Animation = Animation().set(context['Animation'])
+        return self
 
     @classmethod
     async def send_message(cls, chat_id, text, parse_mode: str = None, disable_web_page_preview: bool = True,

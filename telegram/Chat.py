@@ -3,7 +3,28 @@ from telegram.App import content
 
 # from Message import Message
 class Chat:
-    def __init__(self, context: dict) -> object:
+    def __init__(self):
+        self.linked_chat_id = None
+        self.can_set_sticker_set = None
+        self.sticker_set_name = None
+        self.has_protected_content = None
+        self.message_auto_delete_time = None
+        self.slow_mode_delay = None
+        self.invite_link = None
+        self.description = None
+        self.join_by_request = None
+        self.has_restricted_voice_and_video_messages = None
+        self.join_to_send_messages = None
+        self.has_private_forwards = None
+        self.bio = None
+        self.last_name = None
+        self.first_name = None
+        self.username = None
+        self.title = None
+        self.type = None
+        self.chat_id = None
+
+    def set(self, context: dict) -> object:
         self.chat_id: int = content(context, 'id')
         self.type: str = content(context, 'type')
         self.title: str = content(context, 'title')
@@ -27,3 +48,4 @@ class Chat:
         self.can_set_sticker_set: bool = content(context, 'can_set_sticker_set')
         self.linked_chat_id: int = content(context, 'linked_chat_id')
         # self.location = Location()
+        return self
