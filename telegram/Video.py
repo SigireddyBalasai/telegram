@@ -15,7 +15,7 @@ class Video:
         self.file_size: int = None
         self.thumb: PhotoSize = None
 
-    def set(self, context):
+    def set_data(self, context):
         self.file_id: str = content(context, "file_id")
         self.file_unique_id: str = content(context, "file_unique_id")
         self.duration: int = content(context, "duration")

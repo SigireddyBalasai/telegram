@@ -1,8 +1,18 @@
-from telegram.src.App import content
+from App import content
 
 
-class BotCommand:
-    def __init__(self, context):
+class ChatPermissions:
+    def __init__(self):
+        self.can_send_messages: bool = None
+        self.can_send_media_messages: bool = None
+        self.can_send_polls: bool = None
+        self.can_send_other_messages: bool = None
+        self.can_add_web_page_previews: bool = None
+        self.can_change_info: bool = None
+        self.can_invite_users: bool = None
+        self.can_pin_messages: bool = None
+
+    def set_data(self, context):
         context = context['result']
         keys = context.keys()
         print(keys)

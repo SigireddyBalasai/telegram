@@ -9,7 +9,7 @@ class PhotoSize:
         self.height: int = None
         self.file_size: int = None
 
-    def set(self, context):
+    def set_data(self, context):
         self.file_id: str = content(context, "file_id")
         self.file_unique_id: str = content(context, "file_unique_id")
         self.width: int = content(context, "width")

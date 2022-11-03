@@ -1,10 +1,12 @@
-from telegram.src.App import content
+from App import content
 
 
 class BotCommand:
-    def __init__(self, context):
+    def __init__(self):
+        self.description: str = None
+        self.command: str = None
+
+    def set_data(self, context):
         context = context['result']
-        keys = context.keys()
-        print(keys)
         self.command: str = content(context, 'command')
         self.description: str = content(context, 'description')

@@ -11,4 +11,4 @@ class Sticker:
         self.thumb: PhotoSize=None
         self.emoji: str=None
         self.set_name: str=None
-        self.premium_animation: File=None
+        self.premium_animation: File =None
