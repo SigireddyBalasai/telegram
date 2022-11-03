@@ -66,6 +66,7 @@ class Message:
                                          f'&allow_sending_without_reply={allow_sending_without_reply}'
         print(url)
         ans = await App.get(url)
+        print(ans)
         cls.from_user = Message(ans['result']["from"])
         cls.chat = Chat(ans['result']['chat'])
         cls.message = ans['result']['text']
