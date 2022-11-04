@@ -5,6 +5,8 @@ telegram/Audio.py
 telegram/BotCommand.py
 telegram/Chat.py
 telegram/ChatPermissions.py
+telegram/Contact.py
+telegram/Dice.py
 telegram/Document.py
 telegram/Message.py
 telegram/MessageEntity.py
