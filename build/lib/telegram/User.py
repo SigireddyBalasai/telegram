@@ -3,7 +3,20 @@ from Message import Message
 
 
 class User:
-    def __init__(self, context):
+    def __init__(self):
+        self.added_to_attachment_menu = None
+        self.is_premium = None
+        self.username = None
+        self.last_name = None
+        self.can_join_groups = None
+        self.supports_inline_queries = None
+        self.can_read_all_group_messages = None
+        self.language_code = None
+        self.first_name = None
+        self.is_bot = None
+        self.user_id = None
+
+    def set_data(self, context):
         context = context['result']
         keys = context.keys()
         print(keys)
