@@ -16,7 +16,7 @@ class User:
         self.is_bot = None
         self.user_id = None
 
-    def set(self, context):
+    def set_data(self, context):
         context = context['result']
         keys = context.keys()
         print(keys)

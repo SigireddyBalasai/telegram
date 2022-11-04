@@ -24,14 +24,14 @@ class Chat:
         self.type = None
         self.chat_id = None
 
-    def set(self, context: dict) -> object:
+    def set_data(self, context: dict) -> object:
         self.chat_id: int = content(context, 'id')
         self.type: str = content(context, 'type')
         self.title: str = content(context, 'title')
         self.username: str = content(context, 'username')
         self.first_name: str = content(context, 'first_name')
         self.last_name: str = content(context, 'last_name')
-        # self.photo = ChatPhoto()
+        # self.photo = ChatPhoto().set_data()
         self.bio: str = content(context, 'bio')
         self.has_private_forwards: bool = content(context, 'has_private_forwards')
         self.has_restricted_voice_and_video_messages: bool = content(context, 'has_restricted_voice_and_video_messages')

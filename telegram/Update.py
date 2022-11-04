@@ -18,10 +18,10 @@ class Update:
     def prase(self, context):
         self.update_id: int = content(context['result'][-1], 'update_id')
         Update.RecentUpdate = self.update_id
-        self.message: Message = Message(content(context['result'][-1], 'message'))
-        self.edited_message: Message = Message(content(context['result'][-1], 'edited_message'))
-        self.channel_post: Message = Message(content(context['result'][-1], 'channel_post'))
-        self.edited_channel_post: Message = Message(content(context['result'][-1], 'edited_channel_post'))
+        self.message: Message = Message().set_data(content(context['result'][-1], 'message'))
+        self.edited_message: Message = Message().set_data(content(context['result'][-1], 'edited_message'))
+        self.channel_post: Message = Message().set_data(content(context['result'][-1], 'channel_post'))
+        self.edited_channel_post: Message = Message().set_data(content(context['result'][-1], 'edited_channel_post'))
         print(self.__dict__)
 
     def update(self):
