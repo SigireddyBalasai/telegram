@@ -1,10 +1,12 @@
 from App import content
+
+
 class File:
     def __init__(self):
-        self.file_id: str=None
-        self.file_unique_id: str=None
-        self.file_size: int=None
-        self.file_path: str=None
+        self.file_id: str = None
+        self.file_unique_id: str = None
+        self.file_size: int = None
+        self.file_path: str = None
 
     def set(self, context):
         self.file_id: str = content(context, 'file_id')
