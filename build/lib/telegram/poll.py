@@ -1,22 +1,20 @@
 from MessageEntity import MessageEntity
-from content import content
-
-
+from App import content
 class Poll:
     def __init__(self):
-        self.id: str = None
-        self.question: str = None
-        self.options: PollOption = none
-        self.total_voter_count: int = None
-        self.is_closed: bool = None
-        self.is_anonymous: bool = None
-        self.type: str = None
-        self.allows_multiple_answers: bool = None
-        self.correct_option_id: int = None
-        self.explanation: str = None
-        self.explanation_entities: MessageEntity = None
-        self.open_period: int = None
-        self.close_date: int = None
+        self.id: str=None
+        self.question: str=None
+        self.options: PollOption=none
+        self.total_voter_count: int=None
+        self.is_closed: bool=None
+        self.is_anonymous: bool=None
+        self.type: str=None
+        self.allows_multiple_answers: bool=None
+        self.correct_option_id: int=None
+        self.explanation: str=None
+        self.explanation_entities: MessageEntity=None
+        self.open_period: int=None
+        self.close_date: int=None
 
     def set(self, context):
         self.id: str = content(context, 'id')

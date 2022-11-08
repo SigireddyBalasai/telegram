@@ -1,4 +1,4 @@
-from content import content
+from App import content
 class MessageAutoDeleteTimerChanged:
     def __init__(self):
         self.message_auto_delete_time: int=None

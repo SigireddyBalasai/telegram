@@ -1,5 +1,5 @@
 from PhotoSize import PhotoSize
-from App import content
+from content import content
 
 
 class Audio:

@@ -28,4 +28,3 @@ class User:
         self.can_read_all_group_messages: bool = content(context, 'can_read_all_group_messages')
         self.supports_inline_queries: bool = content(context, 'supports_inline_queries')
         return self
-

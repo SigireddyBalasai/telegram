@@ -1,4 +1,4 @@
-from App import content
+from content import content
 
 
 class Dice:

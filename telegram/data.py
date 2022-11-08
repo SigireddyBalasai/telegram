@@ -1,2 +1,0 @@
-from Update import ctx
-

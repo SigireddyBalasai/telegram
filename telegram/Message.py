@@ -1,10 +1,10 @@
-from .App import content
 from .User import User
 from .Chat import Chat
-from .App import App
+#from .App import App
 import datetime
 from .Animation import Animation
 from typing import Union
+from .content import content
 
 
 class Message:

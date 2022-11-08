@@ -5,16 +5,18 @@ from aiohttp import web
 import asyncio
 from typing import Union
 from pyngrok import ngrok
-from Message import Message
+from .Message import Message
 
 
-async def hello(request):
-    ctx.prase(await request.json())
 class App:
     base_url = "https://api.telegram.org/bot"
     token: str
     answer: str
     commands = tuple()
+
+    async def hello(self,request):
+        print(request)
+        self.prase(request.response)
 
     def __init__(self, command_prefix):
         self.token: str
@@ -45,16 +47,15 @@ class App:
                 answer = await response.json()
                 return answer
 
-    @classmethod
-    async def run(cls, token):
+    async def run(self, token):
         App.token = token
         routes = web.RouteTableDef()
         app = web.Application()
         http_tunnel = ngrok.connect(8443, bind_tls=True)
         url = http_tunnel.public_url
-        baseurl = cls.base_url + token + f"/setWebhook?url={url}"
-        cls.get(baseurl)
-        app.add_routes([web.get('/', hello)])
+        baseurl = App.base_url + token + f"/setWebhook?url={url}"
+        App.get(baseurl)
+        app.add_routes([web.get('/', self.hello)])
         web.run_app(app,port=8443)
 
 

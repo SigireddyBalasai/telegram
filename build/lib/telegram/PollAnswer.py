@@ -1,5 +1,5 @@
 from User import User
-from content import content
+from App import content
 class PollAnswer:
     def __init__(self):
         self.poll_id: str=None

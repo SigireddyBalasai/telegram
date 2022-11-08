@@ -1,4 +1,4 @@
-from content import content
+from App import content
 
 
 class File:

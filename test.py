@@ -1,9 +1,6 @@
-from telegram import Update
 from telegram.App import App
 import asyncio
-import os
 
-ctx = Update.Update()
 loop = asyncio.new_event_loop()
 ok = App(command_prefix="!")
 loop.run_until_complete(ok.run(token="5764436314:AAHqvTxI4LLfkK6ilKC2Y4hEo-OW9-oM0g0"))
