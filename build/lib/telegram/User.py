@@ -1,5 +1,4 @@
-from telegram.App import content
-from Message import Message
+from .App import content
 
 
 class User:
@@ -17,9 +16,6 @@ class User:
         self.user_id = None
 
     def set_data(self, context):
-        context = context['result']
-        keys = context.keys()
-        print(keys)
         self.user_id: int = content(context, 'id')
         self.is_bot: bool = content(context, 'is_bot')
         self.first_name: str = content(context, 'first_name')
@@ -31,6 +27,5 @@ class User:
         self.can_join_groups: bool = content(context, 'can_join_groups')
         self.can_read_all_group_messages: bool = content(context, 'can_read_all_group_messages')
         self.supports_inline_queries: bool = content(context, 'supports_inline_queries')
+        return self
 
-    async def send_message(self, text):
-        await Message.send_message(self.user_id, text)

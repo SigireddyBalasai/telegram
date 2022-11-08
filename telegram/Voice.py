@@ -1,14 +1,14 @@
-from PhotoSize import PhotoSize
 from App import content
+from typing import Union
 
 
 class Audio:
     def __init__(self):
-        self.file_id: str = None
-        self.file_unique_id: str = None
-        self.duration: int = None
-        self.mime_type: str = None
-        self.file_size: int = None
+        self.file_id: Union[str, None] = None
+        self.file_unique_id: Union[str, None] = None
+        self.duration: Union[int, None] = None
+        self.mime_type: Union[str, None] = None
+        self.file_size: Union[int, None] = None
 
     def set_data(self, context):
         self.file_id: str = content(context, "file_id")

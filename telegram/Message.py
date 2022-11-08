@@ -1,57 +1,58 @@
-from telegram.App import content
-from User import User
-from telegram.Chat import Chat
-from telegram.App import App
+from .App import content
+from .User import User
+from .Chat import Chat
+from .App import App
 import datetime
-from Animation import Animation
+from .Animation import Animation
+from typing import Union
 
 
 class Message:
     forwaded = None
 
     def __init__(self):
-        self.date: int = None
-        self.message_id: int = None
-        self.from_user: User = None
-        self.sender_chat: Chat = None
-        self.chat: int = None
-        self.forward_from: User = None
-        self.forward_from_chat: Chat = None
-        self.forward_from_message_id: int = None
-        self.forward_signature: str = None
-        self.forward_sender_name: str = None
-        self.forward_date: int = None
-        self.is_automatic_forward: bool = None
-        self.reply_to_message: Message = None
-        self.via_bot: User = None
-        self.edit_date: int = None
-        self.has_protected_content: bool = None
-        self.media_group_id: str = None
-        self.author_signature: str = None
-        self.text: str = None
-        self.animation: Animation = None
+        self.date: Union[int, None] = None
+        self.message_id: Union[int, None] = None
+        self.from_user: Union[User, None] = None
+        self.sender_chat: Union[Chat, None] = None
+        self.chat: Union[int, None] = None
+        self.forward_from: Union[User, None] = None
+        self.forward_from_chat: Union[Chat, None] = None
+        self.forward_from_message_id: Union[int, None] = None
+        self.forward_signature: Union[str, None] = None
+        self.forward_sender_name: Union[str, None] = None
+        self.forward_date: Union[int, None] = None
+        self.is_automatic_forward: Union[bool, None] = None
+        self.reply_to_message: Union[Message, None] = None
+        self.via_bot: Union[User, None] = None
+        self.edit_date: Union[int, None] = None
+        self.has_protected_content: Union[bool, None] = None
+        self.media_group_id: Union[str, None] = None
+        self.author_signature: Union[str, None] = None
+        self.text: Union[str, None] = None
+        self.animation: Union[Animation, None] = None
 
-    def set_data(self, context):
-        self.message_id: int = content(context, 'id') or None
-        self.from_user: User = User().set_data(context['from']) or None
-        self.sender_chat: Chat = Chat().set_data(context['sender_chat']) or None
-        self.date: int = content(context, 'date') or None
-        self.chat: Chat = Chat().set_data(context['chat']) or None
-        self.forward_from: User = User().set_data(context['forward_from']) or None
-        self.forward_from_chat: Chat = Chat().set_data(context['forward_from_chat']) or None
-        self.forward_from_message_id: int = content(context, 'forward_from_message_id') or None
-        self.forward_signature: str = content(context, 'forward_signature') or None
-        self.forward_sender_name: str = content(context, 'forward_sender_name') or None
-        self.forward_date: int = content(context, 'forward_date') or None
-        self.is_automatic_forward: bool = content(context, 'is_automatic_forward') or None
-        self.reply_to_message: Message = Message().set_data(context['reply_to_message']) or None
-        self.via_bot: User = User().set_data(context['via_bot']) or None
+    def set_data(self, context: dict):
+        self.message_id: int = content(context, 'id')
+        self.from_user: User = User().set_data(content(context, 'from'))
+        self.sender_chat: Chat = Chat().set_data(content(context, 'sender_chat'))
+        self.date: int = content(context, 'date')
+        self.chat: Chat = Chat().set_data(content(context, 'chat'))
+        self.forward_from: User = User().set_data(content(context, 'forward_from'))
+        self.forward_from_chat: Chat = Chat().set_data(content(context, 'forward_from_chat'))
+        self.forward_from_message_id: int = content(context, 'forward_from_message_id')
+        self.forward_signature: str = content(context, 'forward_signature')
+        self.forward_sender_name: str = content(context, 'forward_sender_name')
+        self.forward_date: int = content(context, 'forward_date')
+        self.is_automatic_forward: bool = content(context, 'is_automatic_forward')
+        # self.reply_to_message: Message = Message().set_data(content(context, 'reply_to_message'))
+        self.via_bot: User = User().set_data(content(context, 'via_bot'))
         self.edit_date: int = content(context, 'edit_date') or None
         self.has_protected_content: bool = content(context, 'has_protected_content') or None
         self.media_group_id: str = content(context, 'media_group_id') or None
         self.author_signature: str = content(context, 'author_signature') or None
         self.text: str = content(context, 'text') or None
-        self.animation: Animation = Animation().set(context['Animation'])
+        self.animation: Animation = Animation().set_data(content(context, 'Animation'))
         return self
 
     @classmethod

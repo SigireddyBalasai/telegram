@@ -1,5 +1,5 @@
-from PhotoSize import PhotoSize
-from App import content
+from .PhotoSize import PhotoSize
+from .App import content
 
 
 class Animation:

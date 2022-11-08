@@ -1,4 +1,4 @@
-from App import content
+from .App import content
 
 
 class PhotoSize:
