@@ -1,10 +1,11 @@
-from .App import content
 from .User import User
 from .Chat import Chat
-from .App import App
+from .response import get_request
 import datetime
 from .Animation import Animation
 from typing import Union
+from .content import content
+from .Tokensaver import TokenSaver
 
 
 class Message:
@@ -55,47 +56,57 @@ class Message:
         self.animation: Animation = Animation().set_data(content(context, 'Animation'))
         return self
 
+
     @classmethod
-    async def send_message(cls, chat_id, text, parse_mode: str = None, disable_web_page_preview: bool = True,
+    async def send_message(cls, chat_id: int, text: object, parse_mode: str = None, disable_web_page_preview: bool = True,
                            disable_notification: bool = True, protect_content: bool = False,
-                           reply_to_message_id: int = None, allow_sending_without_reply: bool = True):
-        url = App.base_url + App.token + f'/sendMessage?chat_id={chat_id}&text={text}&parse_mode={parse_mode}' \
+                           reply_to_message_id: int = None, allow_sending_without_reply: bool = True) -> object:
+        url = TokenSaver.base_url + TokenSaver.token + f'/sendMessage?chat_id={chat_id}&text={text}&parse_mode={parse_mode}' \
                                          f'&disable_web_page_preview={disable_web_page_preview}' \
                                          f'&disable_notification={disable_notification}' \
                                          f'&protect_content={protect_content}' \
                                          f'&reply_to_message_id={reply_to_message_id}' \
                                          f'&allow_sending_without_reply={allow_sending_without_reply}'
         print(url)
-        ans = await App.get(url)
+        ans = await get_request(url)
         print(ans)
-        cls.from_user = Message(ans['result']["from"])
+        """cls.from_user = Message(ans['result']["from"])
         cls.chat = Chat(ans['result']['chat'])
         cls.message = ans['result']['text']
         cls.date = datetime.datetime.fromtimestamp(ans['result']['date'])
-        cls.text = text
+        cls.text = text"""
 
     @classmethod
     async def forward_message(cls, chat_id, from_chat_id, message_id: int, disable_notifications: bool = False,
                               protect_content: bool = False):
-        url = App.base_url + App.token + f"/forwardMessage?chat_id={chat_id}&from_chat_id={from_chat_id}" \
+        url = TokenSaver.base_url + TokenSaver.token + f"/forwardMessage?chat_id={chat_id}&from_chat_id={from_chat_id}" \
                                          f"&disable_notifications={disable_notifications}" \
                                          f"&protect_content={protect_content}&message_id={message_id}"
+        """
         print(url)
         ok = App()
         ans = await ok.get(url)
         print(ans)
         cls.forwaded = Message(ans)
         return cls.forwaded
+        """
 
     @classmethod
     async def copy_message(cls, chat_id, from_chat_id, message_id: int, caption: str = None,
                            disable_notifications: bool = False, parse_mode: str = None, replay_to_message_id=None,
                            allow_sending_without_replay: bool = False, protect_content: bool = False):
-        url = App.base_url + App.token + f"/forwardMessage?chat_id={chat_id}&caption={caption}" \
+        url = TokenSaver.base_url + TokenSaver.token + f"/forwardMessage?chat_id={chat_id}&caption={caption}" \
                                          f"&from_chat_id={from_chat_id}&disable_notifications={disable_notifications}" \
                                          f"&protect_content={protect_content}&message_id={message_id}" \
                                          f"&parsemode={parse_mode}&replay_to_message_id={replay_to_message_id}" \
                                          f"&allow_sending_without_replay={allow_sending_without_replay}"
         print(url)
-        ans = await App.get(url)
+        ans = await get_request(url)
         print(ans)
+    
+    async def replay(self, text, parse_mode: str = None, disable_web_page_preview: bool = True,
+                           disable_notification: bool = True, protect_content: bool = False,
+                           reply_to_message_id: int = None, allow_sending_without_reply: bool = True):
+        await Message.send_message(self.chat.chat_id, text, parse_mode, disable_web_page_preview,
+                           disable_notification, protect_content,
+                           reply_to_message_id, allow_sending_without_reply)

@@ -1,5 +1,5 @@
 from User import User
-from App import content
+from content import content
 
 
 class MessageEntity:

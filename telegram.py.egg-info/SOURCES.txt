@@ -5,6 +5,7 @@ telegram/Audio.py
 telegram/BotCommand.py
 telegram/Chat.py
 telegram/ChatPermissions.py
+telegram/Commands.py
 telegram/Contact.py
 telegram/Dice.py
 telegram/Document.py
@@ -14,6 +15,8 @@ telegram/MessageAutoDeleteTimerChanged.py
 telegram/MessageEntity.py
 telegram/PhotoSize.py
 telegram/PollAnswer.py
+telegram/Tokensaver.py
+telegram/Update.py
 telegram/User.py
 telegram/Venue.py
 telegram/Video.py
@@ -22,9 +25,11 @@ telegram/VideoNote.py
 telegram/Voice.py
 telegram/WebAppData.py
 telegram/__init__.py
-telegram/data.py
+telegram/content.py
 telegram/poll.py
 telegram/polloption.py
+telegram/prase.py
+telegram/response.py
 telegram/sticker.py
 telegram.py.egg-info/PKG-INFO
 telegram.py.egg-info/SOURCES.txt

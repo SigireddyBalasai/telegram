@@ -3,6 +3,7 @@ from App import content
 from typing import Union
 from content import content
 
+
 class VideoNote:
 
     def __init__(self):

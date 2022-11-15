@@ -1,15 +1,14 @@
 from telegram.App import App
 import asyncio
+from telegram.Commands import Commands
+bot = App(command_prefix="!")
+from telegram.prase import Praser
 
-loop = asyncio.new_event_loop()
-ok = App(command_prefix="!")
-loop.run_until_complete(ok.run(token="5764436314:AAHqvTxI4LLfkK6ilKC2Y4hEo-OW9-oM0g0"))
+async def hello(ctx:Praser):
+    await ctx.message.replay("Hello")
 
-
-@App.command()
-async def hello(ctx):
-    oa = await ctx.update()
-    print(oa.__dict__)
-    # if (ok == '!hello'):
-    # print(oa.message.chat.__dict__)
-    # oa.message.send_message(chat_id=oa.message.chat.chat_id, text="Hello")
+async def how_are_you(ctx:Praser):
+    await ctx.message.replay("Fine")
+Commands.add_command(hello)
+Commands.add_command(how_are_you)
+bot.run(token="5764436314:AAHqvTxI4LLfkK6ilKC2Y4hEo-OW9-oM0g0")

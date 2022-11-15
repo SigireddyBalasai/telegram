@@ -1,7 +1,7 @@
 from PhotoSize import PhotoSize
 from App import content
 from typing import Union
-
+from content import content
 
 class Video:
     def __init__(self):
