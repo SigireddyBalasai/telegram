@@ -20,7 +20,7 @@ class Server:
         Commands(await request.json())
         print(await request.json())
         print(time.time())
-        return web.Response(200)
+        return web.Response()
 
     async def run(self):
         app = web.Application()

