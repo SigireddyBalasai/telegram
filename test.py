@@ -7,7 +7,8 @@ from telegram import User
 
 async def hello(ctx:Praser):
     user = User.User().user_id = "5043021991"
-    await ctx.message.forward(user)
+    await ctx.message.replay_with_photo(photo="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQkukQi5sQQFqioXiiHqIC-ppIE7_1HzSVQ1vylbAQXaw&s",caption="Hello")
+
 
 async def how_are_you(ctx:Praser):
     await ctx.message.replay("Fine")
