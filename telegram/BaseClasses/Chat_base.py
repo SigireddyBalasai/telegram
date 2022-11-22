@@ -13,7 +13,6 @@ class BaseChat:
     first_name = typing.Union[str, None]
     last_name: typing.Union[str, None]
     is_forum: typing.Union[None, bool]
-    # photo : type(ChatPhotoBase)
     active_usernames: list[str]
     emoji_status_custom_emoji_id: typing.Union[str, None]
     bio: typing.Union[str, None]
