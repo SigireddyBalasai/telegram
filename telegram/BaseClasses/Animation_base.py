@@ -9,7 +9,7 @@ class BaseAnimation:
     width: typing.Union[None, int]
     height: typing.Union[None, int]
     duration: typing.Union[None, int]
-    thumb: typing.Union[None, type(BasePhotoSize)]
+    thumb: typing.Union[None, BasePhotoSize]
     file_name: typing.Union[None, str]
     mime_type: typing.Union[None, str]
     file_size: typing.Union[None, int]
