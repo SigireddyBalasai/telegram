@@ -2,6 +2,8 @@ import typing
 from dataclasses import dataclass
 from .ChatPermissions_base import BaseChatPermissions
 from .ChatPhoto_base import BaseChatPhoto
+from .Location_base import BaseLocation
+
 
 @dataclass
 class BaseChat:
@@ -15,6 +17,7 @@ class BaseChat:
     last_name: typing.Union[str, None]
     is_forum: typing.Union[None, bool]
     photo: typing.Union[None, BaseChatPhoto]
+    location: typing.Union[None, BaseLocation]
     permissions: typing.Union[None, BaseChatPermissions]
     active_usernames: list[str]
     emoji_status_custom_emoji_id: typing.Union[str, None]
