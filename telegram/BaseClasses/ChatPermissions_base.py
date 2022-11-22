@@ -3,7 +3,8 @@ import typing
 
 
 @dataclass
-class ChatPermissions:
+class BaseChatPermissions:
+    """Chat Permissions Base"""
     can_send_messages: typing.Union[None, bool]
     can_send_media_messages: typing.Union[None, bool]
     can_send_polls: typing.Union[None, bool]
