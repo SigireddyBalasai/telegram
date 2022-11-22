@@ -8,7 +8,7 @@ def content(context, ids):
         pass
 
 
-# from Message import Message
+# from Base_Message import Base_Message
 class Chat:
     def __init__(self):
         self.linked_chat_id = None
@@ -46,7 +46,7 @@ class Chat:
         self.join_by_request: bool = content(context, 'join_by_request')
         self.description: str = content(context, 'description')
         self.invite_link: str = content(context, 'invite_link')
-        # self.pinned_message = Message()
+        # self.pinned_message = Base_Message()
         # self.permissions = ChatPermissions()
         self.slow_mode_delay: int = content(context, 'slow_mode_delay')
         self.message_auto_delete_time: int = content(context, "message_auto_delete_time")

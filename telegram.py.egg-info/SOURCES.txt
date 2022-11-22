@@ -10,7 +10,7 @@ telegram/Contact.py
 telegram/Dice.py
 telegram/Document.py
 telegram/File.py
-telegram/Message.py
+telegram/Base_Message.py
 telegram/MessageAutoDeleteTimerChanged.py
 telegram/MessageEntity.py
 telegram/PhotoSize.py

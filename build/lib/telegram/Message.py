@@ -46,7 +46,7 @@ class Message:
         self.forward_sender_name: str = content(context, 'forward_sender_name')
         self.forward_date: int = content(context, 'forward_date')
         self.is_automatic_forward: bool = content(context, 'is_automatic_forward')
-        # self.reply_to_message: Message = Message().set_data(content(context, 'reply_to_message'))
+        # self.reply_to_message: Base_Message = Base_Message().set_data(content(context, 'reply_to_message'))
         self.via_bot: User = User().set_data(content(context, 'via_bot'))
         self.edit_date: int = content(context, 'edit_date') or None
         self.has_protected_content: bool = content(context, 'has_protected_content') or None
@@ -70,7 +70,7 @@ class Message:
         print(url)
         ans = await get_request(url)
         print(ans)
-        """cls.from_user = Message(ans['result']["from"])
+        """cls.from_user = Base_Message(ans['result']["from"])
         cls.chat = Chat(ans['result']['chat'])
         cls.message = ans['result']['text']
         cls.date = datetime.datetime.fromtimestamp(ans['result']['date'])
@@ -90,7 +90,7 @@ class Message:
         ok = App()
         ans = await ok.get(url)
         print(ans)
-        cls.forwaded = Message(ans)
+        cls.forwaded = Base_Message(ans)
         return cls.forwaded
         """
 
