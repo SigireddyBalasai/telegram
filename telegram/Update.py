@@ -18,8 +18,6 @@ class Server:
     @staticmethod
     async def hello(request: aiohttp.web.Request):
         Commands(await request.json())
-        print(await request.json())
-        print(time.time())
         return web.Response()
 
     async def run(self):

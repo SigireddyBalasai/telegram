@@ -10,9 +10,10 @@ telegram/Contact.py
 telegram/Dice.py
 telegram/Document.py
 telegram/File.py
-telegram/Base_Message.py
+telegram/Message.py
 telegram/MessageAutoDeleteTimerChanged.py
 telegram/MessageEntity.py
+telegram/MessageMain.py
 telegram/PhotoSize.py
 telegram/PollAnswer.py
 telegram/Tokensaver.py

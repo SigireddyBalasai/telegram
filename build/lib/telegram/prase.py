@@ -1,7 +1,7 @@
 from .Message import Message
 from .content import content
 from typing import Union
-
+from MessageMain import Message
 
 class Praser:
     def __init__(self):

@@ -1,17 +1,23 @@
 from telegram.App import App
 import asyncio
+from telegram.MessageMain import MessageSending
 from telegram.Commands import Commands
+
 bot = App(command_prefix="!")
 from telegram.prase import Praser
 from telegram import User
 
-async def hello(ctx:Praser):
-    user = User.User().user_id = "5043021991"
-    await ctx.message.replay_with_photo(photo="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQkukQi5sQQFqioXiiHqIC-ppIE7_1HzSVQ1vylbAQXaw&s",caption="Hello")
+
+async def hello(ctx: Praser):
+    ok = MessageSending()
+    ok.text = 'hello'
+    await ctx.message.replay(ok)
 
 
-async def how_are_you(ctx:Praser):
+async def how_are_you(ctx: Praser):
     await ctx.message.replay("Fine")
+
+
 Commands.add_command(hello)
 Commands.add_command(how_are_you)
 bot.run(token="5764436314:AAHqvTxI4LLfkK6ilKC2Y4hEo-OW9-oM0g0")

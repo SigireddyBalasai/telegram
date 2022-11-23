@@ -1,2 +1,2 @@
 
-__all__ = ["App", "Chat", "Message", "User"]
+__all__ = ["App", "Chat", "Message", "User","MessageMain"]
