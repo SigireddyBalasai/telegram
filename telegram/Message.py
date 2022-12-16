@@ -1,80 +1,40 @@
-from .User import User
-from .Chat import Chat
-from .response import get_request
-import datetime
-from .Animation import Animation
-from typing import Union
-from .content import content
-from .Tokensaver import TokenSaver
+import typing
+
+from telegram.BaseClasses.Message_base import Base_Message, MessageSending
+from telegram.BaseClasses.Chat_base import BaseChat
+from telegram.BaseClasses.User_base import BaseUser
+from telegram.Tokensaver import TokenSaver
+from telegram.User import User
+from telegram.response import get_request
 
 
-class Message:
-    forwaded = None
+class Message(Base_Message):
 
     def __init__(self):
-        self.date: Union[int, None] = None
-        self.message_id: Union[int, None] = None
-        self.from_user: Union[User, None] = None
-        self.sender_chat: Union[Chat, None] = None
-        self.chat: Union[int, None] = None
-        self.forward_from: Union[User, None] = None
-        self.forward_from_chat: Union[Chat, None] = None
-        self.forward_from_message_id: Union[int, None] = None
-        self.forward_signature: Union[str, None] = None
-        self.forward_sender_name: Union[str, None] = None
-        self.forward_date: Union[int, None] = None
-        self.is_automatic_forward: Union[bool, None] = None
-        self.reply_to_message: Union[Message, None] = None
-        self.via_bot: Union[User, None] = None
-        self.edit_date: Union[int, None] = None
-        self.has_protected_content: Union[bool, None] = None
-        self.media_group_id: Union[str, None] = None
-        self.author_signature: Union[str, None] = None
-        self.text: Union[str, None] = None
-        self.animation: Union[Animation, None] = None
+        self.via_bot: typing.Union[BaseUser, None] = None
+        self.sender_chat: typing.Union[BaseChat, None] = None
+        self.message: typing.Union[Base_Message, None] = None
+        self.from_user: typing.Union[BaseUser, None] = None
+        self.chat: typing.Union[BaseChat, None] = None
+        self.forward_from: typing.Union[BaseUser, None] = None
+        self.forward_from_chat: typing.Union[BaseChat, None] = None
+        self.reply_to_message: typing.Union[Base_Message, None] = None
 
     def set_data(self, context: dict):
-        self.message_id: int = content(context, 'id')
-        self.from_user: User = User().set_data(content(context, 'from'))
-        self.sender_chat: Chat = Chat().set_data(content(context, 'sender_chat'))
-        self.date: int = content(context, 'date')
-        self.chat: Chat = Chat().set_data(content(context, 'chat'))
-        self.forward_from: User = User().set_data(content(context, 'forward_from'))
-        self.forward_from_chat: Chat = Chat().set_data(content(context, 'forward_from_chat'))
-        self.forward_from_message_id: int = content(context, 'forward_from_message_id')
-        self.forward_signature: str = content(context, 'forward_signature')
-        self.forward_sender_name: str = content(context, 'forward_sender_name')
-        self.forward_date: int = content(context, 'forward_date')
-        self.is_automatic_forward: bool = content(context, 'is_automatic_forward')
-        # self.reply_to_message: Base_Message = Base_Message().set_data(content(context, 'reply_to_message'))
-        self.via_bot: User = User().set_data(content(context, 'via_bot'))
-        self.edit_date: int = content(context, 'edit_date') or None
-        self.has_protected_content: bool = content(context, 'has_protected_content') or None
-        self.media_group_id: str = content(context, 'media_group_id') or None
-        self.author_signature: str = content(context, 'author_signature') or None
-        self.text: str = content(context, 'text') or None
-        self.animation: Animation = Animation().set_data(content(context, 'Animation'))
-        return self
+        self.message = Base_Message(**context)
+        self.sender_chat = BaseChat(**context['sender_chat'])
+        self.from_user = BaseUser(**context['from'])
+        self.chat = BaseChat(**context['chat'])
+        self.forward_from = BaseUser(**context['forward_from'])
+        self.forward_from_chat = BaseChat(**context['forward_from_chat'])
+        self.reply_to_message = Base_Message(**context['reply_to_message'])
+        self.via_bot = BaseUser(**context['via_bot'])
 
     @classmethod
-    async def send_message(cls, chat_id: int, text: object, parse_mode: str = None,
-                           disable_web_page_preview: bool = True,
-                           disable_notification: bool = True, protect_content: bool = False,
-                           reply_to_message_id: int = None, allow_sending_without_reply: bool = True) -> object:
-        url = TokenSaver.base_url + TokenSaver.token + f'/sendMessage?chat_id={chat_id}&text={text}&parse_mode={parse_mode}' \
-                                                       f'&disable_web_page_preview={disable_web_page_preview}' \
-                                                       f'&disable_notification={disable_notification}' \
-                                                       f'&protect_content={protect_content}' \
-                                                       f'&reply_to_message_id={reply_to_message_id}' \
-                                                       f'&allow_sending_without_reply={allow_sending_without_reply}'
-        print(url)
-        ans = await get_request(url)
-        print(ans)
-        """cls.from_user = Base_Message(ans['result']["from"])
-        cls.chat = Chat(ans['result']['chat'])
-        cls.message = ans['result']['text']
-        cls.date = datetime.datetime.fromtimestamp(ans['result']['date'])
-        cls.text = text"""
+    async def send_message(cls, **message_sending):
+        """You Can Send Message"""
+        message = Base_Message(**message_sending)
+        await cls.send_message(message)
 
     async def forward(self, user: User):
         await Message.forward_message(chat_id=user.user_id, from_chat_id=self.from_user.user_id)

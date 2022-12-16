@@ -12,8 +12,8 @@ class BaseChat:
     type: typing.Union[str, None] = None
     title: typing.Union[str, None] = None
     username: typing.Union[str, None] = None
-    linked_chat_id = typing.Union[int, None] = None
-    first_name = typing.Union[str, None] = None
+    linked_chat_id : typing.Union[int, None] = None
+    first_name : typing.Union[str, None] = None
     last_name: typing.Union[str, None] = None
     is_forum: typing.Union[None, bool] = None
     photo: typing.Union[None, BaseChatPhoto] = None
