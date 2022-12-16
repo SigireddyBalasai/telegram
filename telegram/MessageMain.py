@@ -5,8 +5,11 @@ class Message(Base_Message):
     def __init__(self, context: dict):
         print(context)
         self.from_user = context.pop("from")
-        voice = context.pop("voice")
-        self.voice = Voice(**voice)
+        try:
+            voice = context.pop("voice")
+            self.voice = Voice(**voice)
+        except:
+            pass
 
         super().__init__(**context)
 
