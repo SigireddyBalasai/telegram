@@ -4,7 +4,6 @@ import asyncio
 from .Tokensaver import TokenSaver
 from typing import Union
 from pyngrok import ngrok
-from .Message import Message
 from .Update import Server
 loop = asyncio.get_event_loop()
 
